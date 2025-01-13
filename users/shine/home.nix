@@ -56,9 +56,12 @@ in
     };
 
     programs.git = {
-      enable = true; # Enable Git
-      userName = "SHINE-six"; # Set Git username
-      userEmail = "desmondfoo0610@gmail.com"; # Set Git email
+      enable = true;
+      userName = "SHINE-six";
+      userEmail = "desmondfoo0610@gmail.com";
+      extraConfig = {
+        credential.helper = "store"; # Store credentials in plaintext
+      };
     };
   };
 }
