@@ -46,11 +46,10 @@ in
       shellAliases = {
         rb-nix = "sudo nixos-rebuild switch --flake ~/nixos-config/flake.nix#default";
         nix-generations = "nixos-rebuild list-generations";
-        helm = "helm --kubeconfig /etc/rancher/k3s/k3s.yaml";
       };
       sessionVariables = {
-        # KUBECONFIG=/etc/rancher/k3s/k3s.yaml; 
         DOCKER_HOST="unix:///run/user/$(id -u)/docker.sock";
+        KUBECONFIG=/etc/rancher/k3s/k3s.yaml; 
       };
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
