@@ -89,35 +89,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # 
+    nvidia-container-toolkit
+    pciutils
   ];
 
-  # Nvidia settings
-    # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.graphics.enable = true;
-  hardware.nvidia-container-toolkit = {
-    enable = true;
-    # mount-nvidia-executables = true;
-    # mount-nvidia-docker-1-directories = true;
-  };
-  hardware.nvidia = {
-    open = true;
-    nvidiaPersistenced = true;
-    modesetting.enable = true;
-    # Enable the Nvidia settings menu,
-	  # accessible via nvidia-settings.
-    nvidiaSettings = true;
 
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-
-    prime = {
-      offload.enable = true;
-      
-      amdgpuBusId = "PCI:5:0:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

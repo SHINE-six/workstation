@@ -18,8 +18,11 @@
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         modules = [
           ./configuration.nix
-          ./users/shine/shine.nix
-          home-manager.nixosModules.home-manager
+          ./users/shine/home.nix
+          ./modules/docker.nix
+          ./modules/nvidia.nix
+          ./modules/k3s.nix
+          home-manager.nixosModules.default
         ];
       };
     };
