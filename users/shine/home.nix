@@ -38,6 +38,8 @@ in
 
     programs.zsh = {
       enable = true; # Enable zsh
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
       oh-my-zsh = {
         enable = true; # Enable oh-my-zsh
         plugins = [ "git" "docker" ]; # Add plugins
@@ -51,8 +53,22 @@ in
         DOCKER_HOST="unix:///run/user/$(id -u)/docker.sock";
         KUBECONFIG=/etc/rancher/k3s/k3s.yaml; 
       };
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
+      # Custom zshrc
+      initExtra = ''
+        # Enable vcs_info for Git integration
+        autoload -Uz vcs_info
+        precmd_vcs_info() { vcs_info }
+        precmd_functions+=( precmd_vcs_info )
+        setopt prompt_subst
+
+        # Configure vcs_info for Git
+        zstyle ':vcs_info:git:*' formats ' %F{green}git:(%b)%f'
+        zstyle ':vcs_info:git:*' actionformats ' %F{green}git:(%b|%a)%f'
+
+        # Customize the prompt
+        PROMPT='$(if [[ -n $SHELL_ENV ]]; then echo "%F{magenta}($(basename $SHELL_ENV)) "; fi)%F{cyan}%1~%f''${vcs_info_msg_0_}%F{cyan} %(!.#.$) %f'
+      '';
+
     };
 
     programs.git = {
