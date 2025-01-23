@@ -15,6 +15,10 @@
     # "--debug" # Optionally add additional args to k3s
   ];
 
+  imports = [
+    ./projecttwin/projecttwin.nix
+  ];
+
   # multi-node setup
   # services.k3s = {
   #   enable = true;
