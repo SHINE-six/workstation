@@ -11,7 +11,7 @@
     # mount-nvidia-docker-1-directories = true;
   };
   hardware.nvidia = {
-    open = true;
+    open = false;
     nvidiaPersistenced = true;
     modesetting.enable = true;
     # Enable the Nvidia settings menu,
@@ -27,4 +27,9 @@
       nvidiaBusId = "PCI:1:0:0";
     };
   };
+
+  # Ensure Nix uses CUDA-compatible libraries
+  environment.systemPackages = with pkgs; [
+    cudaPackages.cudatoolkit
+  ];
 }
