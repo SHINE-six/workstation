@@ -94,7 +94,7 @@
   ];
 
   # nix-ld allow linker, to use app directly from cli
-  # programs.nix-ld.enable = true;
+  programs.nix-ld.enable = true;
 
 
   # Some programs need SUID wrappers, can be configured further or are
