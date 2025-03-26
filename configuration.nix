@@ -91,6 +91,9 @@
   environment.systemPackages = with pkgs; [
     nvidia-container-toolkit
     pciutils
+
+    # To run appimage
+    appimage-run
   ];
 
   # nix-ld allow linker, to use app directly from cli
