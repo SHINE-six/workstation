@@ -10,7 +10,7 @@ in
     isNormalUser = true;
     description = userName;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "networkmanager" "docker" ]; # Add user to wheel for sudo
+    extraGroups = [ "wheel" "networkmanager" "docker" "libvirtd" ]; # Add user to wheel for sudo
   };
   programs.zsh.enable = true;
 
@@ -25,6 +25,8 @@ in
       git
       tree
       jq
+      btop
+      wget
       kubernetes-helm
       (vscode-with-extensions.override {
         vscodeExtensions = with vscode-extensions; [

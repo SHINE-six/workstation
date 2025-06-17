@@ -9,7 +9,8 @@
   networking.firewall.allowedUDPPorts = [
     # 8472 # k3s, flannel: required if using multi-node for inter-node networking
   ];
-  services.k3s.enable = true;
+  # Disable since date: 2025-06-17
+  # services.k3s.enable = true;
   services.k3s.role = "server";
   services.k3s.extraFlags = toString [
     # "--debug" # Optionally add additional args to k3s
