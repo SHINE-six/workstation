@@ -92,28 +92,9 @@
     nvidia-container-toolkit
     pciutils
 
-    # To run virtual machine emulator
-    gnome-boxes
-
     # To run appimage
     appimage-run
   ];
-
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      package = pkgs.qemu_kvm;
-      runAsRoot = true;
-      swtpm.enable = true;
-      ovmf = {
-        enable = true;
-        packages = [(pkgs.OVMF.override {
-          secureBoot = true;
-          tpmSupport = true;
-        }).fd];
-      };
-    };
-  };
 
   # nix-ld allow linker, to use app directly from cli
   programs.nix-ld.enable = true;
@@ -129,8 +110,6 @@
 
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

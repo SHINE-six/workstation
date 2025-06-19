@@ -21,7 +21,9 @@
           ./users/shine/home.nix
           ./modules/docker.nix
           ./modules/nvidia.nix
-          ./modules/k3s.nix
+          ./modules/vm.nix
+          # ./modules/k3s.nix
+          # ./modules/projecttwin/projecttwin.nix
           home-manager.nixosModules.default
         ];
       };

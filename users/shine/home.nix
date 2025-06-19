@@ -10,7 +10,7 @@ in
     isNormalUser = true;
     description = userName;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "networkmanager" "docker" "libvirtd" ]; # Add user to wheel for sudo
+    extraGroups = [ "wheel" "networkmanager" "docker" "libvirtd" "qemu-libvirtd" "kvm" ]; # Add user to wheel for sudo
   };
   programs.zsh.enable = true;
 
